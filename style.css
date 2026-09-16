@@ -141,6 +141,58 @@ a {
   z-index: 2;
 }
 
+.hero-layout {
+  width: min(1100px, 100%);
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+  align-items: center;
+  gap: 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.profile-photo-space {
+  aspect-ratio: 4 / 5;
+  max-width: 330px;
+  width: 100%;
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px dashed var(--sage-dark);
+  border-radius: 45% 45% 12px 12px;
+  background: rgba(255, 253, 249, 0.55);
+  box-shadow: var(--shadow);
+}
+
+.profile-photo-space::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(125, 140, 116, 0.35);
+  border-radius: 40% 40% 8px 8px;
+}
+
+.profile-photo-space img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.profile-photo-space span {
+  position: absolute;
+  z-index: 0;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+
+.profile-photo-space img[src='foto-saya.jpg'] {
+  color: transparent;
+}
+
 .greeting {
   display: inline-block;
   padding: 0.5rem 1.2rem;
@@ -556,5 +608,21 @@ a {
   .blob-1, .blob-2 {
     width: 250px;
     height: 250px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .hero-content {
+    order: 1;
+  }
+
+  .profile-photo-space {
+    order: 2;
+    max-width: 260px;
   }
 }
